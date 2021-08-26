@@ -69,6 +69,8 @@ border.css 解决 1px 边框问题
 npm install stylus --save
 # 指定版本stylus-loader@3.0.2，版本过高时，使用<style lang='stylus' scoped><style>会报错
 npm install stylus-loader@3.0.2 --save
+
+npm install swiper vue-awesome-swiper@2.6.7 --save
 ```
 
 图标对应的字体编码：
@@ -77,3 +79,5 @@ npm install stylus-loader@3.0.2 --save
 build文件夹下的webpack.base.conf.js 找到alias，设置别名`'styles': resolve('src/assets/styles')`
 
 styles文件夹下有variables.styl文件，用于定义存放stylus变量；在css中引入其他css，并想要使用别名styles时，需要加~，如`@import '~styles/variables.styl'`
+
+`import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是travel下的node_modules文件夹
