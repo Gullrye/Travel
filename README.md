@@ -81,3 +81,19 @@ build文件夹下的webpack.base.conf.js 找到alias，设置别名`'styles': re
 styles文件夹下有variables.styl文件，用于定义存放stylus变量；在css中引入其他css，并想要使用别名styles时，需要加~，如`@import '~styles/variables.styl'`
 
 `import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是travel下的node_modules文件夹
+
+## git 分支及合并等
+
+```bash
+git branch index-swiper
+git checkout index-swiper
+# 进行程序设计...设计完成后，在index-swiper分支下
+git add .
+git commit -m 'add home-swiper'
+git push  #  提示用 git push --set-upstream origin index-swiper
+# 切换到main分支
+git checkout main
+git merge origin/index-swiper
+git push
+
+```
