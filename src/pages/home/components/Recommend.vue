@@ -1,7 +1,7 @@
 <template>
 <div class="recommend">
   <div class="title">热销推荐</div>
-  <div class="item" v-for='item in list' :key='item.id'>
+  <div class="item border-bottom" v-for='item in list' :key='item.id'>
     <img :src='item.imgUrl' class="item-img">
     <div class="item-info">
       <p class="item-title">{{ item.title }}</p>
@@ -35,7 +35,6 @@ export default {
 .item
   display flex
   padding .2rem
-  border-bottom 1px solid #eee
   height 1.5rem
   .item-img
     width 1.5rem

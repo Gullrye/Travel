@@ -71,6 +71,9 @@ npm install stylus --save
 npm install stylus-loader@3.0.2 --save
 
 npm install swiper vue-awesome-swiper@2.6.7 --save
+
+# 解决移动端（已支持 PC）各种滚动场景需求的插件
+npm install better-scroll --save
 ```
 
 图标对应的字体编码：
