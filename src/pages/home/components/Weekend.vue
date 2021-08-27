@@ -1,7 +1,7 @@
 <template>
-<div class="recommend">
+<div class="weekend">
   <div class="title">周末去哪儿</div>
-  <div class="item" v-for='item in recommentList' :key='item.id'>
+  <div class="item" v-for='item in list' :key='item.id'>
     <div class="item-img-wrapper">
       <img :src='item.imgUrl' class="item-img">
     </div>
@@ -15,29 +15,12 @@
 
 <script>
 export default {
+  props: {
+    list: Array
+  },
   name: 'HomeWeekend',
   data () {
     return {
-      recommentList: [
-        {
-          id: '0001',
-          title: '京城周末撒欢',
-          imgUrl: 'https://imgs.qunarzz.com/sight/source/1811/f3/86173f863bef61.jpg_r_640x214_52b003ac.jpg',
-          desc: '在帝都过周末，不仅仅是城中游！'
-        },
-        {
-          id: '0002',
-          title: '漂流勇进，烧烤露营',
-          imgUrl: 'https://imgs.qunarzz.com/sight/source/1606/85/c6b6bad1b977e.jpg_r_640x214_5c638941.jpg',
-          desc: '轻松水上漂，任我乐逍遥'
-        },
-        {
-          id: '0003',
-          title: '北京清凉避暑胜地',
-          imgUrl: 'https://imgs.qunarzz.com/sight/source/1505/53/02091f1ee43d0a.jpg_r_640x214_2e3256b1.jpg',
-          desc: '到大自然中享受“天然空调”的清凉'
-        }
-      ]
     }
   }
 }

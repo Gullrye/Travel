@@ -97,3 +97,21 @@ git merge origin/index-swiper
 git push
 
 ```
+
+## ajax
+
+```bash
+npm install axios --save
+```
+
+在config文件夹下index.js中设置如下
+
+```JavaScript
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:8080',
+    pathRewrite: {
+      '^/api': '/static/mock'
+    }
+  }
+```
