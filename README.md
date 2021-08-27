@@ -78,6 +78,6 @@ npm install swiper vue-awesome-swiper@2.6.7 --save
 
 build文件夹下的webpack.base.conf.js 找到alias，设置别名`'styles': resolve('src/assets/styles')`
 
-styles文件夹下有variables.styl文件，用于定义存放stylus变量；在css中引入其他css，并想要使用别名styles时，需要加~，如`@import '~styles/variables.styl'`
+styles文件夹下有variables.styl文件，用于定义存放stylus变量；在css中引入其他css，并想要使用别名styles时，需要加~，如`@import '~styles/variables.styl'`，其中 `@import` 用于从其他样式表导入样式规则
 
 `import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是travel下的node_modules文件夹
