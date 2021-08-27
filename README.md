@@ -115,3 +115,5 @@ proxyTable: {
     }
   }
 ```
+
+页面跳转，设置 router，给对应跳转图标包裹 router-link 标签，并设置属性如 to="/city"
