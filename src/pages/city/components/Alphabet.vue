@@ -78,7 +78,7 @@ export default {
   justify-content center
   position absolute
   top 1.58rem
-  right 0
+  right .1rem
   bottom 0
   width .4rem
   .item
