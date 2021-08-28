@@ -13,24 +13,14 @@
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
           <div class="button-wrapper" v-for="item of hot" :key="item.id">
-            <div class="button">北京</div>
+            <div class="button">{{ item.name }}</div>
           </div>
         </div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
+      <div class="area" v-for='(item, key) of cities' :key='key' :ref='key'>
+        <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
-          <div class="item border-bottom">阿根廷</div>
+          <div class="item border-bottom" v-for="innerItem of item" :key='innerItem.id'>{{ innerItem.name }}</div>
         </div>
       </div>
     </div>
@@ -38,37 +28,43 @@
 </template>
 
 <script>
-import BScroll from '@better-scroll/core'
+import BetterScroll from 'better-scroll'
 export default {
-  name: 'CityList',
-  mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+  props: {
+    cities: Object,
+    hot: Array,
+    letter: String
   },
+  name: 'CityList',
   data () {
     return {
-      hot: [
-        {
-          id: '0001',
-          name: '北京'
-        },
-        {
-          id: '0002',
-          name: '北京'
-        },
-        {
-          id: '0003',
-          name: '北京'
-        },
-        {
-          id: '0004',
-          name: '北京'
-        },
-        {
-          id: '0005',
-          name: '北京'
-        }
-      ]
     }
+  },
+  methods: {
+    setScroll () {
+      this.scroll = new BetterScroll(this.$refs.wrapper, {
+        click: true,
+        mouseWheel: true
+      })
+    },
+    show () {
+      console.log(this.scroll)
+    }
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
+  },
+  mounted () {
+    // 列表在加载，可能造成better-scroll无法滚动
+    setTimeout(() => {
+      this.setScroll()
+      this.show()
+    }, 500)
   }
 }
 </script>
@@ -93,8 +89,9 @@ export default {
   .title
     height .54rem
     line-height .54rem
-    padding .06rem .2rem
-    font-size .266rem
+    padding-left .2rem
+    font-size .26rem
+    background-color #f5f5f5
   .button-list
     overflow hidden
     padding: .1rem .6rem .1rem .1rem
@@ -107,6 +104,7 @@ export default {
         padding .1rem 0
         border .02rem solid #ccc
         text-align center
+        border: .02rem solid #ccc
         border-radius .06rem
   .item-list
     .item

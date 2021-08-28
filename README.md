@@ -120,3 +120,9 @@ proxyTable: {
 ```
 
 页面跳转，设置 router，给对应跳转图标包裹 router-link 标签，并设置属性如 to="/city"
+
+## better-scroll
+
+列表加载时，无法滚动；设置了延时创建 scroll。
+
+字母列：Alphabet 组件传通过 $emit 触发 change 并传 letter 给 City 组件，City 组件执行到 change 获取 letter，用 `:letter:'letter'` 方式写到相应的 city-list 标签处，即传 letter 给 List 组件，List 组件通过 props 进行接收。
