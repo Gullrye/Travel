@@ -40,17 +40,6 @@ export default {
     return {
     }
   },
-  methods: {
-    setScroll () {
-      this.scroll = new BetterScroll(this.$refs.wrapper, {
-        click: true,
-        mouseWheel: true
-      })
-    },
-    show () {
-      console.log(this.scroll)
-    }
-  },
   watch: {
     letter () {
       if (this.letter) {
@@ -60,11 +49,10 @@ export default {
     }
   },
   mounted () {
-    // 列表在加载，可能造成better-scroll无法滚动
-    setTimeout(() => {
-      this.setScroll()
-      this.show()
-    }, 500)
+    this.scroll = new BetterScroll(this.$refs.wrapper, {
+      click: true,
+      mouseWheel: true
+    })
   }
 }
 </script>
