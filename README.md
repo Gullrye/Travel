@@ -33,7 +33,12 @@ npm init webpack travel
 
 ```bash
 # 解决移动端 300ms 点击延迟问题
-npm install fastclick --save
+<meta name="viewport" content="width=device-width">
+html {
+  touch-action: manipulation;
+}
+
+# 参考：https://developers.google.com/web/updates/2013/12/300ms-tap-delay-gone-away
 ```
 
 border.css 解决 1px 边框问题
