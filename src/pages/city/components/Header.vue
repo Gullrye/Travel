@@ -27,7 +27,7 @@ export default {
     position absolute
     top 0
     left 0
-    width .64rem
+    padding 0 .2rem
     height $headerHeight
     .back-ico
       color #fff

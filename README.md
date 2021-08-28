@@ -74,6 +74,9 @@ npm install swiper vue-awesome-swiper@2.6.7 --save
 
 # 解决移动端（已支持 PC）各种滚动场景需求的插件
 npm install better-scroll@1.8.1 --save
+
+# 使用 vuex 实现数据共享，来设置所在城市
+npm install vuex@3.0.1 --save
 ```
 
 图标对应的字体编码：

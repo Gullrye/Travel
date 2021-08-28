@@ -8,6 +8,7 @@
       <li class="search-item border-bottom"
           v-for='item in list'
           :key='item.id'
+          @click='handleCityClick(item.name)'
       >{{ item.name }}</li>
       <li class="search-item border-bottom" v-show="hasNoData">
       没有找到匹配数据
@@ -58,6 +59,10 @@ export default {
     }
   },
   methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    }
   },
   mounted () {
     this.scroll = new BetterScroll(this.$refs.search, {
