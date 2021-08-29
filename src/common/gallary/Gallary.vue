@@ -2,7 +2,7 @@
   <div class="container" @click='handleGallaryClick'>
     <div class="wrapper">
       <swiper :options="swiperOptions">
-        <swiper-slide v-for="(item, index) in imgs" :key="index">
+        <swiper-slide v-for="(item, index) in gallaryImgs" :key="index">
           <img class="gallary-img" :src="item" />
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -14,9 +14,11 @@
 <script>
 export default {
   name: 'CommonGallary',
+  props: {
+    gallaryImgs: Array
+  },
   data () {
     return {
-      imgs: ['http://img1.qunarzz.com/sight/p0/2004/18/18f1f942c9c17720a3.water.jpg_350x240_483b5185.jpg', 'http://img1.qunarzz.com/sight/p0/2004/1a/1a97d6c109be646a3.water.jpg_350x240_1ab976d9.jpg'],
       swiperOptions: {
         pagination: '.swiper-pagination',
         paginationType: 'fraction', // 分页
