@@ -1,10 +1,10 @@
-# travel
+# Travel webapp
 
 > A Vue.js project
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -31,8 +31,9 @@ npm init webpack travel
 
 ## 移动端适配
 
+解决移动端 300ms 点击延迟问题
+
 ```bash
-# 解决移动端 300ms 点击延迟问题
 <meta name="viewport" content="width=device-width">
 html {
   touch-action: manipulation;
@@ -41,7 +42,7 @@ html {
 # 参考：https://developers.google.com/web/updates/2013/12/300ms-tap-delay-gone-away
 ```
 
-border.css 解决 1px 边框问题
+使用 border.css 解决 1px 边框问题。
 
 ## Vue 代码格式化
 
@@ -68,6 +69,47 @@ border.css 解决 1px 边框问题
 }
 ```
 
+## git 分支及合并等
+
+```bash
+# 例
+git branch index-swiper
+git checkout index-swiper
+# 进行程序设计...设计完成后，在index-swiper分支下
+git add .
+git commit -m 'add home-swiper'
+git push --set-upstream origin index-swiper
+# 切换到main分支
+git checkout main
+git merge origin/index-swiper
+git push
+
+```
+
+## ajax
+
+```bash
+npm install axios --save
+```
+
+在 config 文件夹下 index.js 中设置如下：
+
+```JavaScript
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:8080',
+    pathRewrite: {
+      '^/api': '/static/mock'
+    }
+  }
+```
+
+页面跳转，设置 router，给对应跳转图标包裹 `router-link` 标签，并设置属性如 `to="/city"`。
+
+## 深度选择器
+
+引用第三方组件之后，如果需要在组件中局部修改第三方组件的样式，而又不想去除 scoped 属性造成组件之间的样式污染，用 `>>>` 方式，就可以穿透 scoped 了。
+
 ## 其他
 
 ```bash
@@ -83,54 +125,15 @@ npm install better-scroll@1.8.1 --save
 # 使用 vuex 实现数据共享，来设置所在城市
 npm install vuex@3.0.1 --save
 
+# 兼容
 npm install babel-polyfill --save
 ```
 
-图标对应的字体编码：
-`搜索 &#xe67d;、返回 &#xe685;、向下箭头 &#xe688;`
+- 图标对应的字体编码：
+搜索 `&#xe67d;`、返回 `&#xe685;`、向下箭头 `&#xe688;`、图片 `&#xe77b;`
 
-build文件夹下的webpack.base.conf.js 找到alias，设置别名`'styles': resolve('src/assets/styles')`
+- build 文件夹下的 webpack.base.conf.js 找到 alias，设置别名`'styles': resolve('src/assets/styles')`
 
-styles文件夹下有variables.styl文件，用于定义存放stylus变量；在css中引入其他css，并想要使用别名styles时，需要加~，如`@import '~styles/variables.styl'`，其中 `@import` 用于从其他样式表导入样式规则
+- styles 文件夹下有 variables.styl 文件，用于定义存放 stylus 变量；在 css 中引入其他 css，并想要使用别名 styles 时，需要加~，如`@import '~styles/variables.styl'`，其中 `@import` 用于从其他样式表导入样式规则
 
-`import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是travel下的node_modules文件夹
-
-## git 分支及合并等
-
-```bash
-git branch index-swiper
-git checkout index-swiper
-# 进行程序设计...设计完成后，在index-swiper分支下
-git add .
-git commit -m 'add home-swiper'
-git push  #  提示用 git push --set-upstream origin index-swiper
-# 切换到main分支
-git checkout main
-git merge origin/index-swiper
-git push
-
-```
-
-## ajax
-
-```bash
-npm install axios --save
-```
-
-在config文件夹下index.js中设置如下
-
-```JavaScript
-proxyTable: {
-  '/api': {
-    target: 'http://localhost:8080',
-    pathRewrite: {
-      '^/api': '/static/mock'
-    }
-  }
-```
-
-页面跳转，设置 router，给对应跳转图标包裹 router-link 标签，并设置属性如 to="/city"
-
-## 深度选择器
-
-引用了第三方组件之后，如果需要在组件中局部修改第三方组件的样式，而又不想去除scoped属性造成组件之间的样式污染，用 >>> 方式，就可以穿透scoped了。
+- `import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是 travel 下的 node_modules 文件夹
