@@ -1,0 +1,38 @@
+{
+  "ret": true,
+  "data": {
+    "sightName": "乌尔禾魔鬼城(AAAAA景区)",
+    "bannerImg": "https://p5.qhimg.com/bdr/__85/t01ae8d182a88e1a3b0.jpg",
+    "gallaryImgs": [
+      "https://p5.qhimg.com/bdr/__85/t01ae8d182a88e1a3b0.jpg",
+      "http://img1.qunarzz.com/sight/p0/2004/1a/1a97d6c109be646a3.water.jpg_350x240_1ab976d9.jpg"
+    ],
+    "categoryList": [
+      {
+        "title": "成人票",
+        "children": [
+          {
+            "title": "成人三馆联票",
+            "children": [
+              {
+                "title": "成人三馆联票 - 某一连锁店销售"
+              }
+            ]
+          },
+          {
+            "title": "成人五馆联票"
+          }
+        ]
+      },
+      {
+        "title": "学生票"
+      },
+      {
+        "title": "儿童票"
+      },
+      {
+        "title": "特惠票"
+      }
+    ]
+  }
+}
