@@ -1,14 +1,16 @@
 <template>
 <div class="recommend">
   <div class="title">热销推荐</div>
-  <div class="item border-bottom" v-for='item in list' :key='item.id'>
-    <img :src='item.imgUrl' class="item-img">
-    <div class="item-info">
-      <p class="item-title">{{ item.title }}</p>
-      <p class="item-desc">{{ item.desc }}</p>
-      <button class="item-button">查看详情</button>
-    </div>
-  </div>
+  <ul>
+    <router-link class="item border-bottom" v-for='item in list' :key='item.id' :to="'/detail/' + item.id">
+      <img :src='item.imgUrl' class="item-img">
+      <div class="item-info">
+        <p class="item-title">{{ item.title }}</p>
+        <p class="item-desc">{{ item.desc }}</p>
+        <button class="item-button">查看详情</button>
+      </div>
+    </router-link>
+</ul>
 </div>
 </template>
 

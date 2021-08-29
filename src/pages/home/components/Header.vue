@@ -38,15 +38,15 @@ export default {
     text-align center
   .header-input
     flex 1
-    height .64rem
-    line-height .64rem
+    height .6rem
+    line-height .6rem
     padding-left .2rem
     background-color #fff
-    border-radius .1rem
+    border-radius .06rem
     color #ccc
   .header-right
     float right
-    padding 0 .1rem
+    padding 0 .16rem
     text-align center
     color #fff
     ellipsis()
