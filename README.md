@@ -82,6 +82,8 @@ npm install better-scroll@1.8.1 --save
 
 # 使用 vuex 实现数据共享，来设置所在城市
 npm install vuex@3.0.1 --save
+
+npm install babel-polyfill --save
 ```
 
 图标对应的字体编码：
