@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BetterScroll from 'better-scroll'
+import BScroll from '@better-scroll/core'
 export default {
   name: 'CitySearch',
   props: {
@@ -64,10 +64,10 @@ export default {
       this.$router.push('/')
     }
   },
-  mounted () {
-    this.scroll = new BetterScroll(this.$refs.search, {
+  updated () {
+    this.bs = new BScroll(this.$refs.search, {
       click: true,
-      mouseWheel: true
+      scrollY: true
     })
   }
 }
@@ -83,6 +83,8 @@ export default {
   .search-input
     box-sizing border-box
     width 100%
+    height .5rem
+    line-height .5rem
     padding 0 .1rem
     text-align center
     border-radius .1rem

@@ -1,6 +1,6 @@
 <template>
   <div class="list" ref='wrapper'>
-    <div>
+    <div id="content">
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import BetterScroll from 'better-scroll'
+import BScroll from '@better-scroll/core'
 export default {
   props: {
     cities: Object,
@@ -44,7 +44,7 @@ export default {
     letter () {
       if (this.letter) {
         const element = this.$refs[this.letter][0]
-        this.scroll.scrollToElement(element)
+        this.bs.scrollToElement(element)
       }
     }
   },
@@ -53,12 +53,21 @@ export default {
       this.$store.commit('changeCity', city)
       // 改变城市后跳转到首页
       this.$router.push('/')
-    }
+    },
   },
   mounted () {
-    this.scroll = new BetterScroll(this.$refs.wrapper, {
+    console.log(this.$refs.wrapper)
+    console.log('-------mounted 时：')
+    console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
+    console.log('content的高：' + content.offsetHeight)
+  },
+  updated () {
+    console.log('-------updated 时：')
+    console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
+    console.log('content的高：' + content.offsetHeight)
+    this.bs = new BScroll(this.$refs.wrapper, {
       click: true,
-      mouseWheel: true
+      scrollY: true
     })
   }
 }

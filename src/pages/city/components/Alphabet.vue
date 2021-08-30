@@ -7,7 +7,7 @@
       :ref="item"
       @click="handleLetterClick"
       @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
+      @touchmove.prevent="handleTouchMove"
       @touchend="handleTouchEnd"
     >
       {{item}}
@@ -43,7 +43,7 @@ export default {
   methods: {
     handleLetterClick (e) {
       this.$emit('change', e.target.innerText)
-      console.log(e.target.innerText)
+      // console.log(e.target.innerText)
     },
     handleTouchStart () {
       this.touchStatus = true

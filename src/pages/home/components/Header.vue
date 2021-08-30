@@ -52,5 +52,4 @@ export default {
     ellipsis()
     .arrow-ico
       font-size .24rem
-      margin-left -0.04rem
 </style>

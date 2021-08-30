@@ -1,10 +1,12 @@
 <template>
   <div>
-    <home-header></home-header>
-    <home-swiper :list='swiperList'></home-swiper>
-    <home-icons :list='iconList'></home-icons>
-    <home-recommend :list='recommendList'></home-recommend>
-    <home-weekend :list='weekendList'></home-weekend>
+    <div>
+      <home-header></home-header>
+      <home-swiper :list='swiperList'></home-swiper>
+      <home-icons :list='iconList'></home-icons>
+      <home-recommend :list='recommendList'></home-recommend>
+      <home-weekend :list='weekendList'></home-weekend>
+    </div>
   </div>
 </template>
 
@@ -50,7 +52,7 @@ export default {
         this.recommendList = data.recommendList
         this.weekendList = data.weekendList
       }
-      console.log(res)
+      // console.log(res)
     }
   },
   mounted () {
@@ -67,4 +69,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="stylus" scoped>
+</style>>
