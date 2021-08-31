@@ -1,6 +1,6 @@
 <template>
   <div class="list" ref='wrapper'>
-    <div id="content">
+    <div id="content" ref='content'>
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import BScroll from '@better-scroll/core'
+import BScroll from 'better-scroll'
 export default {
   props: {
     cities: Object,
@@ -56,20 +56,17 @@ export default {
     },
   },
   mounted () {
-    console.log(this.$refs.wrapper)
-    console.log('-------mounted 时：')
-    console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
-    console.log('content的高：' + content.offsetHeight)
-  },
-  updated () {
-    console.log('-------updated 时：')
-    console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
-    console.log('content的高：' + content.offsetHeight)
     this.bs = new BScroll(this.$refs.wrapper, {
-      click: true,
-      scrollY: true
-    })
-  }
+      click: true
+    })}
+  // updated () {
+  //   console.log('-------updated 时：')
+  //   console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
+  //   console.log('content的高：' + this.$refs.content.offsetHeight)
+  //   this.bs = new BScroll(this.$refs.wrapper, {
+  //     click: true
+  //   })
+  // }
 }
 </script>
 

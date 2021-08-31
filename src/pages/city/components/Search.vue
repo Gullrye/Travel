@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BScroll from '@better-scroll/core'
+import BScroll from 'better-scroll'
 export default {
   name: 'CitySearch',
   props: {
@@ -66,8 +66,7 @@ export default {
   },
   updated () {
     this.bs = new BScroll(this.$refs.search, {
-      click: true,
-      scrollY: true
+      click: true
     })
   }
 }

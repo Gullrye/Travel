@@ -85,11 +85,11 @@ npm install swiper vue-awesome-swiper@2.6.7 --save
 
 # 解决移动端（已支持 PC）各种滚动场景需求的插件
 npm install better-scroll@1.8.1 --save # 1.x版本直接在 mounted 初始化就能使用
-# or 
-import BScroll from '@better-scroll/core' # 2.x版本使用过程中有问题，得在 updated 中初始化才能滚动，因为 content 在 mounted 时高度不过高
+import BScroll from 'better-scroll' 
 let bs = new BScroll('.wrapper', {
   // ...... 详见配置项
 })
+# better-scroll 2.x版本使用过程中有问题，得在 updated 中初始化才能滚动，因为 content 在 mounted 时高度不过高
 
 # 使用 vuex 实现数据共享，来设置所在城市
 npm install vuex@3.0.1 --save
