@@ -64,7 +64,7 @@ export default {
       this.$router.push('/')
     }
   },
-  updated () {
+  mounted () {
     this.bs = new BScroll(this.$refs.search, {
       click: true
     })

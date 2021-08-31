@@ -79,7 +79,7 @@ npm install axios --save
 
 npm install stylus --save
 # 指定版本stylus-loader@3.0.2，版本过高时，使用<style lang='stylus' scoped><style>会报错
-npm install stylus-loader@3.0.2 --save # 新版脚手架已自带
+npm install stylus-loader@3.0.2 --save
 
 npm install swiper vue-awesome-swiper@2.6.7 --save
 
@@ -113,3 +113,13 @@ npm install babel-polyfill --save
 - 页面跳转，设置 router，给对应跳转图标包裹 `router-link` 标签，并设置属性如 `to="/city"`
 
 - 数据放在 public 文件夹中
+
+- .browserslistrc 文件中设置
+
+  ```bash
+  ie >= 8
+  Firefox >= 3.5
+  chrome >= 35
+  opera >= 11.5
+
+  ```
