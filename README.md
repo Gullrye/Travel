@@ -108,7 +108,7 @@ npm install babel-polyfill --save
 
 - styles 文件夹下有 variables.styl 文件，用于定义存放 stylus 变量；在 css 中引入其他 css，并想要使用别名 styles 时，需要加~，如`@import '~styles/variables.styl'`，其中 `@import` 用于从其他样式表导入样式规则
 
-- `import Vue from 'vue'`和`require('vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css')` 中的路径等相对的都是 travel 下的 node_modules 文件夹
+- `import Vue from 'vue'` 等相对的都是 travel 下的 node_modules 文件夹
 
 - 页面跳转，设置 router，给对应跳转图标包裹 `router-link` 标签，并设置属性如 `to="/city"`
 
