@@ -77,7 +77,7 @@ export default {
   mounted() {
     this.initScroll()
   },
-  // 在 List 中选中一个城市后返回首页，然后再返回 List 时，无法滚动
+  // 在 List 中选中一个城市后返回首页，然后再返回 List 时，无法滚动的解决方法
   activated(){
     this.bs.refresh()
   }
