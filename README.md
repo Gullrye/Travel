@@ -27,31 +27,6 @@ html {
 
 使用 border.css 解决 1px 边框问题。
 
-## Vue 代码格式化
-
-```json
-// .prettierrc
-{
-  "arrowParens": "always",
-  "bracketSpacing": true,
-  "embeddedLanguageFormatting": "auto",
-  "htmlWhitespaceSensitivity": "css",
-  "insertPragma": false,
-  "jsxBracketSameLine": false,
-  "jsxSingleQuote": false,
-  "printWidth": 80,
-  "proseWrap": "preserve",
-  "quoteProps": "as-needed",
-  "requirePragma": false,
-  "semi": false,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "none",
-  "useTabs": false,
-  "vueIndentScriptAndStyle": false
-}
-```
-
 ## git 分支及合并等
 
 ```bash
@@ -83,13 +58,8 @@ npm install stylus-loader@3.0.2 --save
 
 npm install swiper vue-awesome-swiper@2.6.7 --save
 
-# 解决移动端（已支持 PC）各种滚动场景需求的插件
-npm install better-scroll@1.8.1 --save # 1.x版本直接在 mounted 初始化就能使用
-import BScroll from 'better-scroll' 
-let bs = new BScroll('.wrapper', {
-  // ...... 详见配置项
-})
-# better-scroll 2.x版本使用过程中有问题，得在 updated 中初始化才能滚动，因为 content 在 mounted 时高度不过高
+# 解决移动端（已支持 PC）各种滚动场景需求的插件，better-scroll 2.0 (具备所有插件能力的 BetterScroll)
+npm install better-scroll --save
 
 # 使用 vuex 实现数据共享，来设置所在城市
 npm install vuex@3.0.1 --save
@@ -123,3 +93,7 @@ npm install babel-polyfill --save
   opera >= 11.5
 
   ```
+
+- 手机上预览时，需要注意
+
+![web](images/2021-10-25-21-39-57.png)

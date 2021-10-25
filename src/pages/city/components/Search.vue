@@ -1,21 +1,29 @@
 <template>
-<div>
-  <div class="search">
-    <input v-model='keyword' type="text" class="search-input" placeholder="输入城市名或拼音">
+  <div>
+    <div class="search">
+      <input
+        v-model="keyword"
+        type="text"
+        class="search-input"
+        placeholder="输入城市名或拼音"
+      />
+    </div>
+    <div class="search-content" ref="search" v-show="keyword">
+      <ul>
+        <li
+          class="search-item border-bottom"
+          v-for="item in list"
+          :key="item.id"
+          @click="handleCityClick(item.name)"
+        >
+          {{ item.name }}
+        </li>
+        <li class="search-item border-bottom" v-show="hasNoData">
+          没有找到匹配数据
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="search-content" ref='search' v-show='keyword'>
-    <ul>
-      <li class="search-item border-bottom"
-          v-for='item in list'
-          :key='item.id'
-          @click='handleCityClick(item.name)'
-      >{{ item.name }}</li>
-      <li class="search-item border-bottom" v-show="hasNoData">
-      没有找到匹配数据
-      </li>
-    </ul>
-  </div>
-</div>
 </template>
 
 <script>
@@ -23,22 +31,22 @@ import BScroll from 'better-scroll'
 export default {
   name: 'CitySearch',
   props: {
-    cities: Object
+    cities: Object,
   },
-  data () {
+  data() {
     return {
       keyword: '',
       list: [],
-      timer: null
+      timer: null,
     }
   },
   computed: {
-    hasNoData () {
+    hasNoData() {
       return !this.list.length
-    }
+    },
   },
   watch: {
-    keyword () {
+    keyword() {
       if (this.timer) clearTimeout(this.timer)
       if (!this.keyword) {
         this.list = []
@@ -49,26 +57,39 @@ export default {
         for (let key in this.cities) {
           // 每个字母对应的城市拼音和名称是否包含所输入的文字
           this.cities[key].forEach((value) => {
-            if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+            if (
+              value.spell.indexOf(this.keyword) > -1 ||
+              value.name.indexOf(this.keyword) > -1
+            ) {
               result.push(value)
             }
           })
         }
         this.list = result
       }, 100)
-    }
+    },
   },
   methods: {
-    handleCityClick (city) {
+    handleCityClick(city) {
       this.$store.commit('changeCity', city)
       this.$router.push('/')
-    }
+    },
+    initScroll() {
+      // better-scroll 初始化
+      this.bs = new BScroll(this.$refs.search, {
+        probeType: 3,
+        click: true,
+      })
+    },
   },
-  mounted () {
-    this.bs = new BScroll(this.$refs.search, {
-      click: true
+  mounted() {
+    this.$nextTick(() => {
+      this.initScroll()
     })
-  }
+  },
+  updated() {
+    this.bs.refresh()
+  },
 }
 </script>
 

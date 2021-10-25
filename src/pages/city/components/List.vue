@@ -1,6 +1,6 @@
 <template>
-  <div class="list" ref='wrapper'>
-    <div id="content" ref='content'>
+  <div class="list" ref="wrapper">
+    <div id="content" ref="content">
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
@@ -12,15 +12,27 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hot" :key="item.id" @click='handleCityClick(item.name)'>
+          <div
+            class="button-wrapper"
+            v-for="item of hot"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
       </div>
-      <div class="area" v-for='(item, key) of cities' :key='key' :ref='key'>
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="innerItem of item" :key='innerItem.id' @click='handleCityClick(innerItem.name)'>{{ innerItem.name }}</div>
+          <div
+            class="item border-bottom"
+            v-for="innerItem of item"
+            :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)"
+          >
+            {{ innerItem.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -33,40 +45,42 @@ export default {
   props: {
     cities: Object,
     hot: Array,
-    letter: String
+    letter: String,
   },
   name: 'CityList',
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   watch: {
-    letter () {
+    letter() {
       if (this.letter) {
         const element = this.$refs[this.letter][0]
         this.bs.scrollToElement(element)
       }
-    }
+    },
   },
   methods: {
-    handleCityClick (city) {
+    handleCityClick(city) {
       this.$store.commit('changeCity', city)
       // 改变城市后跳转到首页
       this.$router.push('/')
     },
+    initScroll() {
+      // better-scroll 初始化
+      this.bs = new BScroll(this.$refs.wrapper, {
+        probeType: 3,
+        click: true,
+        observeDOM: true,
+      })
+    }
   },
-  mounted () {
-    this.bs = new BScroll(this.$refs.wrapper, {
-      click: true
-    })}
-  // updated () {
-  //   console.log('-------updated 时：')
-  //   console.log('wrapper的高：' + this.$refs.wrapper.offsetHeight)
-  //   console.log('content的高：' + this.$refs.content.offsetHeight)
-  //   this.bs = new BScroll(this.$refs.wrapper, {
-  //     click: true
-  //   })
-  // }
+  mounted() {
+    this.initScroll()
+  },
+  // 在 List 中选中一个城市后返回首页，然后再返回 List 时，无法滚动
+  activated(){
+    this.bs.refresh()
+  }
 }
 </script>
 
