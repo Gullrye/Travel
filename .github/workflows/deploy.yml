@@ -1,0 +1,38 @@
+# deploy.yml
+name: deploy to aliyun
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 切换分支
+      - name: Checkout
+        uses: actions/checkout@main # @ 后是版本号或分支对应最近版本
+      # 下载 git submodule
+      # - uses: srt32/git-actions@v0.0.3
+      #   with:
+      #     args: git submodule update --init --recursive
+      # 使用 node:14
+      - name: use Node.js 14
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: '14.x'
+      # 下载依赖并打包
+      - name: Build
+        run: |
+          yarn install
+          yarn run build
+      # Deploy
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main # 使用 ssh-deploy 库上 main 分支的版本
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: '-avzr --delete'
+          SOURCE: 'dist/'
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          EXCLUDE: '/dist/, /node_modules/'
