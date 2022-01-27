@@ -5,10 +5,10 @@ module.exports = {
       '/api': {
         target: 'http://localhost:8080',
         pathRewrite: {
-          '^/api': '/mock'
-        }
-      }
-    }
+          '^/api': '/api',
+        },
+      },
+    },
   },
   publicPath: './',
   productionSourceMap: false,
@@ -17,5 +17,5 @@ module.exports = {
       .set('styles', path.join(__dirname, './src/assets/styles'))
       .set('@', path.join(__dirname, './src/'))
       .set('common', path.join(__dirname, './src/common'))
-  }
+  },
 }
