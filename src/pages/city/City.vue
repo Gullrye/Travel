@@ -2,12 +2,11 @@
   <div>
     <city-header></city-header>
     <city-search :cities="cities"></city-search>
-    <city-list
+    <city-list :cities="cities" :hot="hotCities" :letter="letter"></city-list>
+    <city-alphabet
       :cities="cities"
-      :hot="hotCities"
-      :letter="letter"
-    ></city-list>
-    <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
+      @change="handleLetterChange"
+    ></city-alphabet>
   </div>
 </template>
 
@@ -24,20 +23,20 @@ export default {
     CityHeader,
     CitySearch,
     CityList,
-    CityAlphabet
+    CityAlphabet,
   },
-  data () {
+  data() {
     return {
       cities: {},
       hotCities: [],
-      letter: ''
+      letter: '',
     }
   },
   methods: {
-    getCityInfo () {
-      axios.get('/travel/api/city.json').then(this.handleGetCityInfoSucc)
+    getCityInfo() {
+      axios.get('./api/city.json').then(this.handleGetCityInfoSucc)
     },
-    handleGetCityInfoSucc (res) {
+    handleGetCityInfoSucc(res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
@@ -45,16 +44,14 @@ export default {
         this.hotCities = data.hotCities
       }
     },
-    handleLetterChange (letter) {
+    handleLetterChange(letter) {
       this.letter = letter
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.getCityInfo()
-  }
+  },
 }
 </script>
 
-<style lang='stylus' scoped>
-
-</style>
+<style lang="stylus" scoped></style>

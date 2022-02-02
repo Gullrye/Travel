@@ -1,13 +1,13 @@
 <template>
   <div>
     <detail-banner
-      :sightName='sightName'
-      :bannerImg='bannerImg'
-      :gallaryImgs='gallaryImgs'
+      :sightName="sightName"
+      :bannerImg="bannerImg"
+      :gallaryImgs="gallaryImgs"
     ></detail-banner>
     <detail-header></detail-header>
     <div class="content">
-      <detail-list :list='list'></detail-list>
+      <detail-list :list="list"></detail-list>
     </div>
   </div>
 </template>
@@ -22,25 +22,27 @@ export default {
   components: {
     DetailBanner,
     DetailHeader,
-    DetailList
+    DetailList,
   },
-  data () {
+  data() {
     return {
       sightName: '',
       bannerImg: '',
       gallaryImgs: [],
-      list: []
+      list: [],
     }
   },
   methods: {
-    getDetailInfo () {
-      axios.get('/travel/api/detail.json', {
-        params: {
-          id: this.$route.params.id
-        }
-      }).then(this.handleGetDetailSucc)
+    getDetailInfo() {
+      axios
+        .get('./api/detail.json', {
+          params: {
+            id: this.$route.params.id,
+          },
+        })
+        .then(this.handleGetDetailSucc)
     },
-    handleGetDetailSucc (res) {
+    handleGetDetailSucc(res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
@@ -49,11 +51,11 @@ export default {
         this.gallaryImgs = data.gallaryImgs
         this.list = data.categoryList
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.getDetailInfo()
-  }
+  },
 }
 </script>
 

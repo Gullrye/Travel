@@ -2,10 +2,10 @@
   <div>
     <div>
       <home-header></home-header>
-      <home-swiper :list='swiperList'></home-swiper>
-      <home-icons :list='iconList'></home-icons>
-      <home-recommend :list='recommendList'></home-recommend>
-      <home-weekend :list='weekendList'></home-weekend>
+      <home-swiper :list="swiperList"></home-swiper>
+      <home-icons :list="iconList"></home-icons>
+      <home-recommend :list="recommendList"></home-recommend>
+      <home-weekend :list="weekendList"></home-weekend>
     </div>
   </div>
 </template>
@@ -25,25 +25,25 @@ export default {
     HomeSwiper,
     HomeIcons,
     HomeRecommend,
-    HomeWeekend
+    HomeWeekend,
   },
-  data () {
+  data() {
     return {
       lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
-      weekendList: []
+      weekendList: [],
     }
   },
   computed: {
-    ...mapState(['city'])
+    ...mapState(['city']),
   },
   methods: {
-    getHomeInfo () {
-      axios.get('/travel/api/index.json?city=' + this.city).then(this.getHomeInfoSucc)
+    getHomeInfo() {
+      axios.get('./api/index.json?city=' + this.city).then(this.getHomeInfoSucc)
     },
-    getHomeInfoSucc (res) {
+    getHomeInfoSucc(res) {
       res = res.data
       if (res.ret && res.data) {
         var data = res.data
@@ -53,21 +53,21 @@ export default {
         this.weekendList = data.weekendList
       }
       // console.log(res)
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.lastCity = this.city
     this.getHomeInfo()
   },
   // 更换城市后更新参数
-  activated () {
+  activated() {
     if (this.lastCity !== this.city) {
       this.lastCity = this.city
       this.getHomeInfo()
     }
-  }
+  },
 }
 </script>
 
-<style lang="stylus" scoped>
-</style>>
+<style lang="stylus" scoped></style>
+>
