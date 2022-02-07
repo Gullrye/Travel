@@ -9,27 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v1
       - name: Install pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.15.1
-
       - name: Set node version to 16
         uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: 'pnpm'
-
       - name: Install npm@7
-      run: pnpm add --global npm@7
-
-      - run: pnpm install
-
+        run: pnpm add --global npm@7
+      - name: pnpm install
+        run: pnpm install
       - name: Build
         run: pnpm run build
-
       # Deploy
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
