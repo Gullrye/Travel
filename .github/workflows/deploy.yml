@@ -22,6 +22,9 @@ jobs:
           node-version: 16
           cache: 'pnpm'
 
+      - name: Install npm@7
+      run: pnpm add --global npm@7
+
       - run: pnpm install
 
       - name: Build
