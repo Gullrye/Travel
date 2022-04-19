@@ -97,3 +97,5 @@ npm install babel-polyfill --save
 - 手机上预览时，需要注意
 
 ![web](images/2021-10-25-21-39-57.png)
+
+并关闭电脑防火墙。
